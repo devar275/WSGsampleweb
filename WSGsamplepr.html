@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE B Section Groups Details</title>
+    <style>
+        /* Stylish Background Photo */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* Covered Box (Container) */
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+
+        .input-with-mic {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        .mic-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .mic-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 25px;
+            margin-top: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .go-btn {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.3);
+            margin-top: 10px;
+        }
+
+        .go-btn:hover {
+            background-color: #27ae60;
+        }
+
+        #dashboard-section, #result-section, #certificate-section {
+            display: none;
+        }
+
+        .takeover-text {
+            color: #2980b9;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .member-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ecf0f1;
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #bdc3c7;
+            background: #fff;
+        }
+
+        .feedback-box {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        /* Certificate Large Box Design with Stamp at Bottom */
+        .cert-box {
+            border: 6px double #2c3e50;
+            padding: 30px;
+            padding-bottom: 80px; 
+            text-align: center;
+            background: #fff;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .stamp {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            border: 3px solid #e74c3c;
+            color: #e74c3c;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 8px;
+            transform: rotate(-12deg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+        }
+
+        .cert-title {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .voice-status {
+            text-align: center;
+            font-size: 14px;
+            color: #e74c3c;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Step 1: Login Form inside Covered Box -->
+        <div id="login-section">
+            <h1>WORLD SELECTION GROUPS</h1>
+            
+            <div class="form-group">
+                <label>Group leader name:</label>
+                    <input type="text" id="leaderName" placeholder="Enter leader name">
+            </div>
+
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="gender" value="Male"> Male</label>
+                    <label><input type="radio" name="gender" value="Female"> Female</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Enter leader ID:</label>
+          
+                    <input type="text" id="leaderId" placeholder="Type leader name followed by 77 (e.g., Name77)">
+            </div>
+
+            <button class="go-btn" onclick="handleLogin()">Go Now / Login</button>
+        </div>
+
+        <!-- Step 2: Dashboard -->
+        <div id="dashboard-section">
+            <h1 id="displayLeaderH1"></h1>
+            <div class="takeover-text">Leader is all takeover person</div>
+
+            <h3>Group Members:</h3>
+            <div id="membersList"></div>
+
+            <button class="go-btn" style="margin-top:20px;" onclick="calculatePercentage()">Enter Details and Percentage</button>
+        </div>
+
+        <!-- Step 3: Result Section -->
+        <div id="result-section">
+            <h1 style="color: #2c3e50;">Group Percentage Details</h1>
+            <div id="resultMembersList" style="text-align: left; margin-bottom: 20px;"></div>
+            <div id="totalScoreText" style="font-size: 18px; font-weight: bold; color: #333; text-align: center;"></div>
+            <div id="feedbackText" class="feedback-box"></div>
+            <div id="satisfiedText" style="color: #27ae60; font-weight: bold; font-size: 18px; text-align: center; margin-top: 10px;">Group Satisfied</div>
+            
+            <button class="go-btn" style="margin-top: 25px;" onclick="showCertificate()">Print Certificate</button>
+        </div>
+
+        <!-- Step 4: Large Certificate Section with Stamp at Bottom -->
+        <div id="certificate-section">
+            <div class="cert-box">
+                <div class="cert-title">WORLD SELECTION GROUP CERTIFICATE</div>
+                <hr style="border: 1px solid #bdc3c7; margin-bottom: 20px;">
+                
+                <div id="certContent" style="text-align: left; font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 20px;"></div>
+                
+                <p style="color: #e74c3c; font-size: 11px; font-weight: bold; margin-top: 25px; line-height: 1.5; text-align: left;">
+                    This certificate only Dev web inside useful, outside is not working and not an original certificate.
+                </p>
+
+                <!-- Stamp moved to bottom right -->
+                <div class="stamp">WSG Qualified</div>
+            </div>
+            <button class="go-btn" style="margin-top: 20px; background-color: #e74c3c;" onclick="location.reload()">Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        const femaleLeaders = ["kavya reddy", "hema Keerthi", "sreeleela"];
+        
+        const teamsData = {
+            "kavya reddy": ["rojji", "manikanta", "suresh", "Isarmail"],
+            "hema Keerthi": ["hemalatha", "Samyukta", "Kalyani", "Prabhas"],
+            "sreeleela": ["leela", "Hema", "Deepthi", "raju"],
+            "shiva": ["surya", "suraj", "Deepika", "queen omari"],
+
+        };
+
+        let currentLeader = "";
+        let certificateDetailsHTML = "";
+
+        
+
+        function handleLogin() {
+            let nameInput = document.getElementById('leaderName').value.trim();
+            let idInput = document.getElementById('leaderId').value.trim();
+            let genderSelected = document.querySelector('input[name="gender"]:checked');
+
+            if (!nameInput || !idInput || !genderSelected) {
+                alert("దయచేసి అన్ని వివరాలు మరియు జెండర్‌ను నింపండి!");
+                return;
+            }
+
+            if (idInput !== nameInput + "77" && idInput !== "77") {
+                alert("దయచేసి లీడర్ పేరు పక్కన 77 టైప్ చేయండి (ఉదాహరణకు: పేరు77)");
+                return;
+            }
+
+            let normalizedKey = nameInput.toLowerCase();
+            if (!teamsData[normalizedKey]) {
+                alert("ఈ పేరుతో లీడర్ వివరాలు కనుగొనబడలేదు.");
+                return;
+            }
+
+            // Gender Validation Rules
+            let isFemaleLeader = femaleLeaders.includes(normalizedKey);
+            if (isFemaleLeader && genderSelected.value === "Male") {
+                alert("ఈ లీడర్ Female కాబట్టి, మీరు Male కాదు Female సెలెక్ట్ చేయాలి!");
+                return;
+            }
+            if (!isFemaleLeader && genderSelected.value === "Female") {
+                alert("ఈ లీడర్ Male కాబట్టి, మీరు Female కాదు Male సెలెక్ట్ చేయాలి!");
+                return;
+            }
+
+            currentLeader = nameInput;
+
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('dashboard-section').style.display = 'block';
+            document.getElementById('displayLeaderH1').innerText = "Leader: " + nameInput;
+
+            let members = teamsData[normalizedKey];
+            let membersHTML = '';
+            members.forEach((mem, index) => {
+                membersHTML += `
+                    <div class="member-row">
+                        <span>${mem}</span>
+                        <select id="role_${index}">
+                            <option value="none">None of the above</option>
+                            <option value="editor">Editor</option>
+                            <option value="ppt">PPT</option>
+                            <option value="coding">Coding</option>
+                            <option value="others">Others</option>
+                        </select>
+                    </div>
+                `;
+            });
+            document.getElementById('membersList').innerHTML = membersHTML;
+        }
+
+        function calculatePercentage() {
+            let totalPoints = 0;
+            let members = teamsData[currentLeader.toLowerCase()];
+            let resultHTML = '';
+            let certHTML = `<b>Group Leader:</b> ${currentLeader}<br><br><b>Members Performance:</b><br>`;
+
+            members.forEach((mem, index) => {
+                const selectedRole = document.getElementById(`role_${index}`).value;
+                let pts = 0;
+                let roleName = "None of the above";
+
+                if (selectedRole === 'editor') { pts = 5; roleName = "Selected Editor (5%)"; }
+                else if (selectedRole === 'ppt') { pts = 5; roleName = "Selected PPT (5%)"; }
+                else if (selectedRole === 'coding') { pts = 5; roleName = "Selected Coding (5%)"; }
+                else if (selectedRole === 'others') { pts = 7; roleName = "Selected Others (5%)"; }
+                else if (selectedRole === 'none') { pts = 0; roleName = "None of the above (0%)"; }
+
+                totalPoints += pts;
+                resultHTML += `<div style="background:#f1f2f6; padding:10px; margin:6px 0; border-radius:5px; color:#333;"><strong>${mem}</strong> - ${roleName}</div>`;
+                certHTML += `• ${mem}: ${roleName}<br>`;
+            });
+
+            document.getElementById('dashboard-section').style.display = 'none';
+            document.getElementById('result-section').style.display = 'block';
+
+            document.getElementById('resultMembersList').innerHTML = resultHTML;
+            document.getElementById('totalScoreText').innerText = `Total Score: ${totalPoints} / 20 Points`;
+
+            let feedback = "";
+            let feedbackColor = "";
+
+            if (totalPoints >= 20) {
+                feedback = "Excellent Group!";
+                feedbackColor = "#27ae60";
+            } else if (totalPoints >= 15) {
+                feedback = "Good Group!";
+                feedbackColor = "#2980b9";
+            } else {
+                feedback = "Average Group.";
+                feedbackColor = "#e67e22";
+            }
+
+            const feedbackDiv = document.getElementById('feedbackText');
+            feedbackDiv.innerText = feedback;
+            feedbackDiv.style.backgroundColor = feedbackColor;
+            feedbackDiv.style.color = "#fff";
+
+            certHTML += `<br><b>Total Score:</b> ${totalPoints} / 20<br><b>Feedback:</b> ${feedback}<br><b>Status:</b> Group Satisfied`;
+            certificateDetailsHTML = certHTML;
+        }
+
+        function showCertificate() {
+            document.getElementById('result-section').style.display = 'none';
+            document.getElementById('certificate-section').style.display = 'block';
+            document.getElementById('certContent').innerHTML = certificateDetailsHTML;
+        }
+    </script>
+</body>
+</html> 
